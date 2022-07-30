@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Users;
+use App\Http\Controllers\UsersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('user');
+     return view('hello');
+    // return redirect('about');
 });
+//Route::get('/about', function() {
+//    return view('about');
+//});
+Route::view("about", 'about');
+Route::view("contact", 'contact');
+// Route::get("user", "Users@index"); laravel 6 and 7
+Route::get("users/{user}", [Users::class, 'index']);
+// Route::get("user", function(){
+//     return view("user");
+// });
+Route::get("user", [UsersController::class, 'viewLoad']);
+
